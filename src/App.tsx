@@ -112,7 +112,7 @@ function App() {
 
         {/* Kolom Kanan */}
         <div className="space-y-6">
-          {airPollution && <AirPollutionCard data={airPollution} />}
+          {airPollution && <AirPollutionCard data={airPollution} aura={''} />}
           <div>
             <h2 className="text-xl font-bold mb-4">Other Cities</h2>
             <div className="space-y-4">
