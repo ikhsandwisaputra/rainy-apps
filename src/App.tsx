@@ -5,7 +5,7 @@ import { getCurrentWeather, getForecast, getAirPollution, getOtherCityWeather } 
 import type { CurrentWeatherData, ForecastData, AirPollutionData } from './types/weather';
 import CurrentWeatherCard from './components/CurrentWeatherCard';
 import ForecastCard from './components/ForecastCard';
-import AirPollutionCard from './components/AirPollutionCard';
+// import AirPollutionCard from './components/AirPollutionCard';
 import OtherCitiesCard from './components/OtherCitiesCard';
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
@@ -16,7 +16,7 @@ function App() {
   const [forecast, setForecast] = useState<ForecastData | null>(null);
   const [airPollution, setAirPollution] = useState<AirPollutionData | null>(null);
   const [otherCities, setOtherCities] = useState<(CurrentWeatherData | null)[]>([]);
-  
+
   // State untuk loading dan error
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,9 +78,9 @@ function App() {
        <div className="flex flex-col justify-center items-center h-screen gap-4">
           <p className="text-red-500">{error}</p>
           <div className="flex w-full max-w-sm items-center space-x-2">
-            <Input 
-              type="text" 
-              placeholder="Coba kota lain, e.g., Jakarta" 
+            <Input
+              type="text"
+              placeholder="Coba kota lain, e.g., Jakarta"
               value={searchQuery}
               onChange={(e: { target: { value: SetStateAction<string>; }; }) => setSearchQuery(e.target.value)}
             />
@@ -91,47 +91,36 @@ function App() {
   }
 
   return (
-    <main className="container mx-auto p-4 space-y-6">
-      <div className="grid grid-cols-3 grid-rows-3 gap-4 border">
-        <div className="bg-red-500 w-full h-full row-span-3 space-y-6"> {currentWeather && <CurrentWeatherCard data={currentWeather} />}
-        </div>
-        <div className="col-span-2 row-span-2 bg-blue-500 w-full h-full flex justify-around items-center">
-           {forecast && <ForecastCard data={forecast} />}
-        </div>
-        <div className="col-span-2 bg-green-500 w-full h-50 flex items-center justify-around">
-          <div className="bg-yellow-500 w-15 h-15">kotak 2</div>
-          <div className="bg-yellow-500 w-15 h-15">kotak 2</div>
-          <div className="bg-yellow-500 w-15 h-15">kotak 2</div>
-        </div>
-      </div>
-      <div className="flex w-full max-w-sm items-center space-x-2 mx-auto ">
-        <Input 
-          type="text" 
-          placeholder="Cari kota..." 
+    <main className="container mx-auto p-4 bg-gray-100">
+       <div className="flex w-full max-w-sm items-center space-x-2 mx-auto mb-6">
+        <Input
+          type="text"
+          placeholder="Cari kota..."
           value={searchQuery}
           onChange={(e: { target: { value: SetStateAction<string>; }; }) => setSearchQuery(e.target.value)}
           onKeyPress={(e: { key: string; }) => e.key === 'Enter' && handleSearch()}
         />
         <Button onClick={handleSearch}>Cari</Button>
       </div>
-
-      <div className="grid grid-cols-2  gap-6 border border-red-500 lg:p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Kolom Kiri */}
-        <div className=" space-y-6">
+        <div className="lg:col-span-1 space-y-6">
           {currentWeather && <CurrentWeatherCard data={currentWeather} />}
-          {forecast && <ForecastCard data={forecast} />}
         </div>
 
         {/* Kolom Kanan */}
-        <div className="space-y-6">
-          {airPollution && <AirPollutionCard data={airPollution} aura={''} />}
-          <div>
-            <h2 className="text-xl font-bold mb-4">Other Cities</h2>
-            <div className="space-y-4">
-              {otherCities.map((cityWeather, index) => 
-                cityWeather ? <OtherCitiesCard key={index} cityWeather={cityWeather} /> : null
-              )}
-            </div>
+        <div className="lg:col-span-2 space-y-6">
+          {forecast && airPollution && <ForecastCard data={forecast} airPollution={airPollution} />}
+          <div className="space-y-6">
+            {/* {airPollution && <AirPollutionCard data={airPollution} aura={''} />} */}
+              <div>
+                <h2 className="text-xl font-bold mb-4">Other Cities</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {otherCities.map((cityWeather, index) =>
+                    cityWeather ? <OtherCitiesCard key={index} cityWeather={cityWeather} /> : null
+                  )}
+                </div>
+              </div>
           </div>
         </div>
       </div>
