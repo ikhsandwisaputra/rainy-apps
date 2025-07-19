@@ -18,20 +18,23 @@ const CurrentWeatherCard: React.FC<Props> = ({ data }) => {
   const weatherIcon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Current Weather in {name}</CardTitle>
+    <Card className="w-full h-full bg-[#6658e6] text-white rounded-4xl">
+      <CardHeader className='text-center'>
+
+        <p>Cuaca saat ini</p>
+        <CardTitle className='text-3xl font-bold'>{name}</CardTitle>
+        <p>{new Date().toLocaleString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
       </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="flex items-center justify-between">
+      <CardContent className="flex flex-col justify-between h-fit gap-[100px] text-center">
+        <div className=" border-2 pt-20">
           <div>
-            <p className="text-4xl font-bold">{Math.round(main.temp)}°C</p>
+            <p className="text-[3rem] font-extrabold">{Math.round(main.temp)}°C</p>
             <p className="text-lg capitalize">{weather[0].description}</p>
             <p className="text-sm">Feels like {Math.round(main.feels_like)}°C</p>
           </div>
           <img src={weatherIcon} alt={weather[0].description} className="w-20 h-20" />
         </div>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-2 gap-4 text-sm border-2">
           <div className="flex items-center gap-2"><WiStrongWind size={24} /> Wind: {wind.speed} m/s</div>
           <div className="flex items-center gap-2"><WiHumidity size={24} /> Humidity: {main.humidity}%</div>
           <div className="flex items-center gap-2"><WiSunrise size={24} /> Sunrise: {new Date(sys.sunrise * 1000).toLocaleTimeString()}</div>
