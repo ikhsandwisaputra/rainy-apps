@@ -9,12 +9,12 @@ interface Props {
 const getWeatherImage = (weatherMain: string): string => {
   // Ganti dengan URL asset atau import local image sesuai kebutuhan
   const images: { [key: string]: string } = {
-    Clear: '/asset-rain-apps/Layer 1.png',
-    Clouds: '/asset-rain-apps/Layer 2.png',
-    Rain: '/asset-rain-apps/Layer 4.png',
-    Snow: '/asset-rain-apps/Layer 18.png',
-    Drizzle: '/asset-rain-apps/Layer 5.png',
-    Mist:'/asset-rain-apps/Layer 6.png'
+    Clear: '/rainy-apps/asset-rain-apps/Layer 1.png',
+    Clouds: '/rainy-apps/asset-rain-apps/Layer 2.png',
+    Rain: '/rainy-apps/asset-rain-apps/Layer 4.png',
+    Snow: '/rainy-apps/asset-rain-apps/Layer 18.png',
+    Drizzle: '/rainy-apps/asset-rain-apps/Layer 5.png',
+    Mist:'/rainy-apps/asset-rain-apps/Layer 6.png'
   };
   return images[weatherMain] || '/icons/default.png';
 };

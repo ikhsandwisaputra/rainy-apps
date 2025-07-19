@@ -25,17 +25,17 @@ const getWeatherImage = (weatherMain: string) => {
   const weatherCondition = weatherMain.toLowerCase();
   switch (weatherCondition) {
     case 'clear':
-      return '/asset-rain-apps/Layer 1.png'; // Cerah
+      return '/rainy-apps/asset-rain-apps/Layer 1.png'; // Cerah
     case 'clouds':
-      return '/asset-rain-apps/Layer 2.png'; // Berawan
+      return '/rainy-apps/asset-rain-apps/Layer 2.png'; // Berawan
     case 'rain':
-      return '/asset-rain-apps/Layer 4.png'; // Hujan
+      return '/rainy-apps/asset-rain-apps/Layer 4.png'; // Hujan
     case 'drizzle':
-      return '/asset-rain-apps/Layer 5.png'; // Gerimis
+      return '/rainy-apps/asset-rain-apps/Layer 5.png'; // Gerimis
     case 'thunderstorm':
-      return '/asset-rain-apps/Layer 11.png'; // Badai petir
+      return '/rainy-apps/asset-rain-apps/Layer 11.png'; // Badai petir
     case 'snow':
-      return '/asset-rain-apps/Layer 18.png'; // Salju
+      return '/rainy-apps/asset-rain-apps/Layer 18.png'; // Salju
     case 'mist':
     case 'smoke':
     case 'haze':
@@ -45,9 +45,9 @@ const getWeatherImage = (weatherMain: string) => {
     case 'ash':
     case 'squall':
     case 'tornado':
-      return '/asset-rain-apps/Layer 6.png'; // Berkabut/Asap/dll.
+      return '/rainy-apps/asset-rain-apps/Layer 6.png'; // Berkabut/Asap/dll.
     default:
-      return '/asset-rain-apps/Layer 3.png'; // Default
+      return '/rainy-apps/asset-rain-apps/Layer 3.png'; // Default
   }
 };
 
